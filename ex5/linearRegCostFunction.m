@@ -23,7 +23,7 @@ penalty = lambda/(2*m)*sum(theta.^2,2);
 
 J = 1/(2*m) * sum( (X*theta- y) .^2 ) + penalty;
 
-Xgrad = [zeros(m,1),X];
+% Xgrad = [zeros(m,1),X];
 gradPenalty = theta*(lambda/m);
 
 grad = (1/m) * (X*theta - y)'*X + gradPenalty';
