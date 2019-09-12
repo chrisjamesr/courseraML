@@ -18,15 +18,15 @@ grad = zeros(size(theta));
 %
 %               You should set J to the cost and grad to the gradient.
 %
-% Xbias = [ones(m,1),X];
-penalty = lambda/(2*m)*sum(theta.^2,2);
 
-J = 1/(2*m) * sum( (X*theta- y) .^2 ) + penalty;
+penalty = lambda/(2*m)*sum([0;theta(2:length(theta))].^2);
 
-% Xgrad = [zeros(m,1),X];
-gradPenalty = theta*(lambda/m);
+J = sum( (X*theta-y) .^2 )/(2*m) + penalty;
+theta
+% gradPenalty = [0,theta(2:end)]*(lambda/m);
+gradPenalty = [0;theta(2:end)]*(lambda/m);
 
-grad = (1/m) * (X*theta - y)'*X + gradPenalty';
+grad = (1/m) * X' * (X*theta - y) + gradPenalty;
 
 
 
