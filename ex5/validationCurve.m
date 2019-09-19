@@ -27,26 +27,32 @@ error_val = zeros(length(lambda_vec), 1);
 %
 % Note: You can loop over lambda_vec with the following:
 %
-%       for i = 1:length(lambda_vec)
-%           lambda = lambda_vec(i);
-%           % Compute train / val errors when training linear 
-%           % regression with regularization parameter lambda
-%           % You should store the result in error_train(i)
-%           % and error_val(i)
-%           ....
-%           
-%       end
+      for i = 1:length(lambda_vec)
+          lambda = lambda_vec(i);
+          % Compute train / val errors when training linear 
+          % regression with regularization parameter lambda
+          % You should store the result in error_train(i)
+          % and error_val(i)
+          theta = trainLinearReg(X, y, lambda);
+
+          Jtrain = linearRegCostFunction(X, y, theta, 0);
+          Jval = linearRegCostFunction(Xval, yval, theta, 0);
+
+          error_train(i) = Jtrain;
+          error_val(i) = Jval;
+
+
+          % [error_train_temp, error_val_temp] = learningCurve(X, y, Xval, yval, lambda);
+          % [ele,idx] = min(error_val_temp);
+          % error_val(i) = error_val_temp(idx);
+          % error_train(i) = error_train_temp(idx);
+          
+          
+
+      end
 %
 %
-
-
-
-
-
-
-
-
-
+  
 
 % =========================================================================
 
