@@ -22,8 +22,8 @@ grad = zeros(size(theta));
 penalty = lambda/(2*m)*sum([0;theta(2:length(theta))].^2);
 
 J = sum( (X*theta-y) .^2 )/(2*m) + penalty;
-theta
-% gradPenalty = [0,theta(2:end)]*(lambda/m);
+
+
 gradPenalty = [0;theta(2:end)]*(lambda/m);
 
 grad = (1/m) * X' * (X*theta - y) + gradPenalty;
