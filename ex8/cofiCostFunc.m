@@ -42,9 +42,9 @@ Theta_grad = zeros(size(Theta));
 
 penalty = (lambda/2)*sum(sum(Theta.^2)) + (lambda/2)*sum(sum(X.^2));
 
-J = sum(sum((((X*Theta')' - Y ).* R).^2 ).* R) ) /2 + penalty;
-X_grad = ((R.*((X*Theta')' - Y ))* Theta) + (lambda*X);
-Theta_grad = ((R.*((X*Theta')' - Y ))'* X) + (lambda*Theta );
+J = sum(sum(R.*(((Theta*X')' - Y )).^2 )) /2 + penalty;
+X_grad = ((R.*((Theta*X')' - Y ))* Theta) + (lambda*X);
+Theta_grad = ((R.*((Theta*X')' - Y ))'* X) + (lambda*Theta );
 
 % J = sum(sum((((X*Theta') - Y).*R).^2))/2 + (lambda/2)*sum(sum(Theta.^2)) + (lambda/2)*sum(sum(X.^2));
 % X_grad = (((X*Theta') - Y).*R) * Theta  + lambda*X;
